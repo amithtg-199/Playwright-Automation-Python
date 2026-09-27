@@ -1,0 +1,44 @@
+Python collections
+-------------------
+
+we can store group of data in to single variable.
+we represent group of data/ objects using collection.
+
+
+Python Collections
+---------------
+1) List
+2) Tuple
+3) Dictionary
+4) Set
+
+List
+----------------
+A list is a collection which is ordered and changeable. 
+In Python lists are written with square brackets [ ].
+List is mutable.
+
+
+mylist=[values]
+mylist=[100,200,300,"x", "y"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
