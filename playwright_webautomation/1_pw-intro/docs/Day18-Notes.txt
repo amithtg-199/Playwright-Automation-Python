@@ -1,0 +1,63 @@
+Playwright
+----------
+Web  & API automation
+-------------------
+
+Python  - Programming language
+Pytest  -- testing framework developed using Python
+
+Playwright is available as a plugin on top of pytest.
+
+
+Pre-requisite:
+----------
+Python - Through installer file, you can install python
+
+
+Pytest  -   pip install pytest
+
+
+1) Install pytest-playwright
+-------------------
+	pip install pytest-playwright
+
+
+2) Install playwright browsers
+
+	playwright install
+
+
+Chrome - chromium
+Edge - chromium
+
+Firefox  - firefox
+Safari   - webkit
+
+
+modes of execution
+---------------
+headless - no UI   ( Default)
+headed  - we can see the UI with the interactions..
+
+
+Synchronous Vs Asynchronous
+
+
+paralle tests
+-
+x-dist
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

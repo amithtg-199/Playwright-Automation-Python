@@ -1,0 +1,24 @@
+
+
+Browser ----> chromium, firefox, webkit etc.....
+
+page --> tab, popup, window
+
+
+
+Browser --->context (user profiles)----> pages
+
+
+types of events 
+----------
+alerts/dialogs -----> dialog
+download files -----> download
+popups   -----> popup
+tabs  ---------> page
+
+page.on()
+
+
+Assignment - handle Tabs
+-----------------
+https://opensource-demo.orangehrmlive.com/web/index.php/auth/login

@@ -1,0 +1,19 @@
+Locators
+-----------
+
+
+1) Identifying/locating the web elements
+2) Performing actions
+3) validations ( assertions)
+
+Locating the elements
+--------------------
+1) Playwright built-in locators
+2) Xpath
+3) CSS
+
+
+Assignment
+----------
+1) https://testautomationpractice.blogspot.com/p/playwrightpractice.html
+2) https://opensource-demo.orangehrmlive.com/web/index.php/auth/login

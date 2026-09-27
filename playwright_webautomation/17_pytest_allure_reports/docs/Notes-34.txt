@@ -1,0 +1,68 @@
+Pytest-html reports
+---------
+Step 1: Install the plugin
+	pip install pytest-html
+
+Step 2: Configure pytest.ini
+
+[pytest]
+
+addopts = --html=myreport.html --self-contained-html --capture=tee-sys
+
+Step 3: Create Sample Tests
+
+
+Step 4: Run the Tests and Generate Report
+
+
+Step 5: Attach Screenshots on Test Failures (conftest.py)  - additional step
+
+
+
+Allure reports
+-----------------
+
+Step 1: Install Allure Pytest Plugin
+
+	pip install allure-Pytest
+
+
+Step 2: Install Allure Command-Line Tool (to view and generate reports)
+
+Windows : https://github.com/allure-framework/allure2/releases 
+Mac: brew install allure
+
+
+
+Step 3: Configure Allure in pytest.ini
+
+[pytest]
+
+addopts = --alluredir=reports/allure-results
+
+
+
+Step 4: Create and Run Your Tests
+
+Step 5: Generate and View the Allure Report
+
+Run time:
+	allure serve reports/allure-results
+
+Permanent report:
+	allure generate reports/allure-results -o reports/allure-report --clean
+	
+	
+
+Step 6: Attach Screenshots on Test Failures (conftest.py)
+
+
+
+
+
+
+
+
+
+
+

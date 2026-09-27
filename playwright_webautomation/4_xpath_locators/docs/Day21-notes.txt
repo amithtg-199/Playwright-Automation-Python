@@ -1,0 +1,54 @@
+XPath
+---------
+XPath stands for XML Path Language. 
+
+1) Absolute (full xpath)
+2) relative ( partial xpath)
+
+DOM - Document Object Model
+
+
+/html/body/div[4]/div[1]/div[1]/div[1]/a/img
+
+/html[1]/body[1]/div[4]/div[1]/div[1]/div[1]/a[1]/img[1]
+
+
+//tagname[@attribute='value']
+
+
+
+<input text="xyz">
+
+<input name="abc">welcome</input>   -- here welcome is innertext
+
+
+xpaths
+--------------
+//button[text()='START' or text()='STOP']
+//button[@name='start' or @name='stop']
+//button[contains(@name,'st')]
+//button[starts-with(@name,'st')]
+
+
+
+css
+-----
+
+button[name='start'],button[name='stop']
+button[name^='st']     # equals to starts-with() in xpath
+button[name*='st']     # eqauals to contains() in xpath
+
+
+playwright locator
+-------
+page.get_by_role("button",name=re.compile(r'ST.*'))
+
+
+
+
+
+
+
+
+
+

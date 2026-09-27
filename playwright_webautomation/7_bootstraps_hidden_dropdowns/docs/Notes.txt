@@ -1,0 +1,16 @@
+Dropdowns
+-------
+1) Select dropdown  - having 'select' tag
+	options are embedded in 'option' tags
+
+
+2) bootstrap dropdown - having div /button tags
+	options are embedded inside the 'div' tags
+
+3) hidden dropdown - options are hidden from the DOM
+
+
+inner_text() vs text_content()
+all_inner_texts() vs all_text_contents()
+
+all() 
