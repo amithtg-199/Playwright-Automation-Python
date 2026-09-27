@@ -1,0 +1,21 @@
+Python Collections
+-----------
+Tuple
+-------
+
+1) we can store all types of data values
+2) ordered ( items will be stored in the same order)
+3) Immutable ( Cannot be changed)
+4)  represents with () round brackets
+5) duplicates allowed
+
+
+Set
+--------
+1) we can store all types of data values
+2) Unordered ( items will be stored in random order)
+3) index is not supported
+4) Duplicates not allowed
+5) represent with {} flower brackets
+6) set is mutable ( we can do changes)
+
