@@ -1,0 +1,77 @@
+Match statement
+---
+
+Syntax:
+--------
+match var:
+	case 1: statements
+	case 2: statements
+	------
+	-----
+	case_: statements
+
+Looping/Iteration statements
+---------------
+
+print(1)
+print(2)
+print(3)
+
+
+while
+for   -- range()
+
+
+var=1
+while condition:
+	statement1
+	statement2
+ 	-------
+	inc/dec
+
+
+range() - is function. It will generate a sequence of numbers.
+
+
+Syntax:       range(start, stop, step)
+
+
+
+for loop syntax:
+---------------
+
+for var in range(start,stop,step):
+	statement1
+	statement2
+
+
+jumping statements
+-----
+break
+continue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

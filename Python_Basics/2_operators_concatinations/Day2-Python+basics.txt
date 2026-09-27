@@ -1,0 +1,90 @@
+Day2-Python basics
+-----------------
+
+Delete variables
+
+del - keyword used for deleting variables
+
+Data types 
+--------
+Basics
+-----
+int, float
+str
+bool 
+
+a=100   # int
+a=200
+a=300
+
+
+Derived types/Data structures
+--------
+List
+Set
+Tuple
+etc...
+
+to know the data type of variable we can use 
+
+print(type(variable))
+
+
+Operators
+--------------
+Arithmetic
+Comparison/relational
+Logical 
+
+
+
+a=100
+b=200
+
+c=a+b
+
+concatenation
+Take the input from use
+
+input()  --- take the input from the user in string format only.
+
+type convertion
+------------
+int()
+float()
+
+
+Sir please repeat  /  //  and  %
+
+
+a=10
+b=2
+
+a/b = 5
+
+a//b =5
+
+a%b  =0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

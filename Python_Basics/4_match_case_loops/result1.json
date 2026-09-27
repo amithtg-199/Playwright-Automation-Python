@@ -1,0 +1,303 @@
+{
+  "config": {
+    "configFile": "/app/playwright.config.ts",
+    "rootDir": "/app",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInverted": null,
+    "maxFailures": 0,
+    "metadata": { "actualWorkers": 4 },
+    "preserveOutput": "always",
+    "reporter": [["json", { "outputFile": "result1.json" }]],
+    "reportSlowTests": { "max": 5, "threshold": 15000 },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/app/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/app/tests",
+        "snapshotDir": "/app/tests"
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.48.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests/auth.spec.ts",
+      "file": "tests/auth.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Auth: Successful user login",
+          "ok": true,
+          "tags": ["@smoke"],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [{ "workerIndex": 0, "status": "passed", "duration": 820, "errors": [], "retry": 0, "startTime": "2026-08-23T14:00:00.000Z" }],
+              "status": "expected"
+            }
+          ],
+          "id": "auth-01",
+          "file": "tests/auth.spec.ts",
+          "line": 10,
+          "column": 5
+        },
+        {
+          "title": "Auth: Reject invalid password",
+          "ok": true,
+          "tags": ["@smoke"],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [{ "workerIndex": 0, "status": "passed", "duration": 610, "errors": [], "retry": 0, "startTime": "2026-08-23T14:00:01.000Z" }],
+              "status": "expected"
+            }
+          ],
+          "id": "auth-02",
+          "file": "tests/auth.spec.ts",
+          "line": 25,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "tests/profile.spec.ts",
+      "file": "tests/profile.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "UserProfile: Update avatar image",
+          "ok": false,
+          "tags": ["@regression"],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "timedOut",
+                  "duration": 30005,
+                  "error": {
+                    "message": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('img.avatar-upload-complete') to be visible",
+                    "stack": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\n    at ProfilePage.uploadAvatar (/app/pages/ProfilePage.ts:42:24)\n    at /app/tests/profile.spec.ts:18:22",
+                    "location": { "file": "pages/ProfilePage.ts", "column": 24, "line": 42 }
+                  },
+                  "errors": [
+                    { "message": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('img.avatar-upload-complete') to be visible" }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-08-23T14:00:00.000Z",
+                  "attachments": [{ "name": "trace", "contentType": "application/zip", "path": "/app/test-results/profile-avatar/trace.zip" }]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "prof-01",
+          "file": "tests/profile.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "UserProfile: Change user bio",
+          "ok": true,
+          "tags": ["@regression"],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [{ "workerIndex": 1, "status": "passed", "duration": 1150, "errors": [], "retry": 0, "startTime": "2026-08-23T14:00:31.000Z" }],
+              "status": "expected"
+            }
+          ],
+          "id": "prof-02",
+          "file": "tests/profile.spec.ts",
+          "line": 38,
+          "column": 5
+        },
+        {
+          "title": "UserProfile: Update email notification preferences",
+          "ok": true,
+          "tags": ["@settings"],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [{ "workerIndex": 1, "status": "passed", "duration": 940, "errors": [], "retry": 0, "startTime": "2026-08-23T14:00:32.500Z" }],
+              "status": "expected"
+            }
+          ],
+          "id": "prof-03",
+          "file": "tests/profile.spec.ts",
+          "line": 52,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "tests/checkout.spec.ts",
+      "file": "tests/checkout.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Cart: Add single product to cart",
+          "ok": true,
+          "tags": ["@e2e"],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [{ "workerIndex": 2, "status": "passed", "duration": 1420, "errors": [], "retry": 0, "startTime": "2026-08-23T14:00:00.000Z" }],
+              "status": "expected"
+            }
+          ],
+          "id": "chk-01",
+          "file": "tests/checkout.spec.ts",
+          "line": 12,
+          "column": 5
+        },
+        {
+          "title": "Cart: Remove item from cart",
+          "ok": true,
+          "tags": ["@e2e"],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [{ "workerIndex": 2, "status": "passed", "duration": 1050, "errors": [], "retry": 0, "startTime": "2026-08-23T14:00:02.000Z" }],
+              "status": "expected"
+            }
+          ],
+          "id": "chk-02",
+          "file": "tests/checkout.spec.ts",
+          "line": 28,
+          "column": 5
+        },
+        {
+          "title": "Checkout: Complete purchase with credit card",
+          "ok": false,
+          "tags": ["@e2e", "@critical"],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "status": "failed",
+                  "duration": 5340,
+                  "error": {
+                    "message": "Error: expect(received).toBeVisible()\nCall log:\n  - expect.toBeVisible with timeout 5000ms\n  - waiting for locator('.order-success-toast')\n  - locator resolved to hidden <div class=\"order-success-toast\">...</div>",
+                    "stack": "Error: expect(received).toBeVisible()\n    at CheckoutPage.verifyOrderSuccess (/app/pages/CheckoutPage.ts:88:41)\n    at /app/tests/checkout.spec.ts:82:12",
+                    "location": { "file": "pages/CheckoutPage.ts", "column": 41, "line": 88 }
+                  },
+                  "errors": [
+                    { "message": "Error: expect(received).toBeVisible()\nCall log:\n  - expect.toBeVisible with timeout 5000ms\n  - waiting for locator('.order-success-toast')" }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-08-23T14:00:03.500Z",
+                  "attachments": [{ "name": "screenshot", "contentType": "image/png", "path": "/app/test-results/checkout-failed.png" }]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "chk-03",
+          "file": "tests/checkout.spec.ts",
+          "line": 45,
+          "column": 5
+        },
+        {
+          "title": "Checkout: Validate coupon code discount",
+          "ok": true,
+          "tags": ["@e2e"],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [{ "workerIndex": 2, "status": "passed", "duration": 1310, "errors": [], "retry": 0, "startTime": "2026-08-23T14:00:09.000Z" }],
+              "status": "expected"
+            }
+          ],
+          "id": "chk-04",
+          "file": "tests/checkout.spec.ts",
+          "line": 70,
+          "column": 5
+        },
+        {
+          "title": "Settings: Toggle dark mode theme",
+          "ok": true,
+          "tags": ["@ui"],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [{ "workerIndex": 3, "status": "passed", "duration": 480, "errors": [], "retry": 0, "startTime": "2026-08-23T14:00:00.000Z" }],
+              "status": "expected"
+            }
+          ],
+          "id": "set-01",
+          "file": "tests/checkout.spec.ts",
+          "line": 95,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-08-23T14:00:00.000Z",
+    "duration": 33500,
+    "expected": 8,
+    "unexpected": 2,
+    "flaky": 0,
+    "skipped": 0
+  }
+}
