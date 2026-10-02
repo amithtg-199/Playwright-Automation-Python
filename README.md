@@ -58,7 +58,9 @@ Playwright-Automation-Python/
 │   ├── 17_pytest_allure_reports/            # Allure report integration & visualization
 │   ├── 18_POM_pattern/                      # Page Object Model design principles
 │   ├── 19_POM_Framework_part1/              # Enterprise POM Framework implementation - Part 1
-│   └── 20_POM_Framework_Part2/              # Enterprise POM Framework implementation - Part 2
+│   ├── 20_POM_Framework_Part2/              # Enterprise POM Framework implementation - Part 2
+│   ├── 21_POM_Framework_part3/              # Architecture notes & system design workspace link
+│   └── 22_pytest_framework_opencart/        # Production-Ready OpenCart End-to-End Test Automation Framework
 │
 ├── uploads/                                 # Sample test files for upload/download automation
 │   ├── test.pdf
@@ -79,6 +81,22 @@ Playwright-Automation-Python/
 - **Data-Driven Automation**: Parameterized test executions reading datasets from CSV and Excel.
 - **Enterprise POM Architecture**: Modular Page Object Model separation for clean maintenance, reusable components, and scalability.
 - **Rich Reporting**: Pytest-HTML and Allure Reporting configurations.
+
+---
+
+## 🛒 Featured Framework: OpenCart Test Automation (`22_pytest_framework_opencart`)
+
+A complete, production-grade test automation suite built for the **OpenCart** e-commerce application using Playwright and Pytest.
+
+### 🌟 Key Highlights
+- **Page Object Model (POM)**: Decoupled pages with isolated locators and business methods:
+  - `HomePage`, `LoginPage`, `LogoutPage`, `MyAccountPage`, `ProductPage`, `RegistrationPage`, `SearchResultsPage`, `ShoppingCartPage`
+- **Multi-Environment Support**: Clean configuration management for `dev`, `uat`, and `preprod` environments via typed dataclasses (`environments.py`) and `.env`.
+- **Universal Data-Driven Testing**: Helper utilities (`load_test_data.py`) supporting **CSV**, **JSON**, and **Excel (`.xlsx`)** test data files.
+- **Dynamic Synthetic Data**: Built-in `Faker` generators for realistic user registrations and dynamic test payloads.
+- **Automatic Diagnostics**: Built-in screenshot capture, trace retention, and video recording on failure (`retain-on-failure`).
+- **Flexible Test Grouping**: Pytest markers for `-m "sanity"`, `regression`, `datadriven`, `end_to_end`, and `smoke`.
+- **Enterprise Logging & Reporting**: Formatted console logging and file rotation with full **Allure** integration.
 
 ---
 
@@ -103,7 +121,7 @@ source venv/bin/activate
 
 ### 3. Install Dependencies & Playwright Browsers
 ```bash
-pip install pytest playwright pytest-playwright pytest-html allure-pytest pandas openpyxl
+pip install pytest playwright pytest-playwright pytest-html allure-pytest pandas openpyxl Faker python-dotenv pytest-xdist pytest-rerunfailures
 playwright install
 ```
 
@@ -131,6 +149,23 @@ pytest --browser webkit --headed
 ### Run a specific test module:
 ```bash
 pytest playwright_webautomation/5_textbox_radiobutton_checkbox/test_checkboxes.py -v
+```
+
+### Run OpenCart End-to-End Test Suite:
+```bash
+cd playwright_webautomation/22_pytest_framework_opencart
+
+# Run sanity marker tests
+pytest -m "sanity"
+
+# Run regression suite in parallel
+pytest -m "regression" -n auto
+
+# Run data-driven tests
+pytest -m "datadriven"
+
+# Run against a specific environment (e.g. uat, dev, preprod)
+pytest --env=uat --headed
 ```
 
 ### View Playwright Trace:

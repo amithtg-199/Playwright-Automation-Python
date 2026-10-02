@@ -1,3 +1,24 @@
+.env
+
+__pycache__/
+*.pyc
+
+.pytest_cache/
+
+.venv/
+venv/
+
+allure-results/
+allure-report/
+reports/
+*.html
+
+screenshots/
+traces/
+videos/
+
+playwright/.cache/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -68,37 +89,10 @@ desktop.ini
 # Logs
 *.log
 logs/
-**/logs/
 loggers/
-**/loggers/
 
-# Reports & Test Execution Artifacts
-reports/
-**/reports/
-allure-results/
-**/allure-results/
-allure-report/
-**/allure-report/
-playwright-report/
-**/playwright-report/
-blob-report/
-**/blob-report/
-test-results/
-**/test-results/
-*.html
-
-# Screenshots, Traces & Videos
-screenshots/
-**/screenshots/
-traces/
-**/traces/
-videos/
-**/videos/
-
-# Documents (PDFs, Office documents)
+# Documents
 *.pdf
 *.doc
 *.docx
-*.ppt
-*.pptx
-!uploads/test.pdf
+
