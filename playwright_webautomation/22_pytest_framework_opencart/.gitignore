@@ -15,6 +15,7 @@ venv/
 !reports/traces/.gitkeep
 !reports/videos/.gitkeep
 
+#Remove inside data
 reports/allure-results/*
 reports/screenshots/*
 reports/traces/*
