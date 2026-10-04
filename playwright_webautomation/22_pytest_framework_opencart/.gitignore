@@ -8,14 +8,24 @@ __pycache__/
 .venv/
 venv/
 
-allure-results/*
 allure-report/*
+reports/allure-results/*
 reports/*
+!reports/.gitkeep
 *.html
+!reports/allure-results/.gitkeep
 
-screenshots/*
-traces/*
-videos/*
+reports/screenshots/*
+reports/traces/*
+reports/videos/*
+
+!reports/screenshots/.gitkeep
+!reports/traces/.gitkeep
+!reports/videos/.gitkeep
+
+*.webm
+*.zip
+*.png
 
 playwright/.cache/
 
