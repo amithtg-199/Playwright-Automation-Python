@@ -4,8 +4,11 @@ from dotenv import load_dotenv
 from dataclasses import dataclass
 
 
-ENV_PATH = Path(__file__).resolve().parent/".env"
-load_dotenv(dotenv_path=ENV_PATH)
+CURRENT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = CURRENT_DIR.parent
+load_dotenv(dotenv_path=CURRENT_DIR / ".env")
+load_dotenv(dotenv_path=PROJECT_ROOT / ".env")
+load_dotenv()
 
 def get_required_env(name:str) -> str:
     value = os.getenv(name)
