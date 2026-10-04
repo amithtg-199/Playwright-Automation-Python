@@ -8,6 +8,8 @@ __pycache__/
 .venv/
 venv/
 
+allure-report/*
+reports/allure-results/*
 *.webm
 *.zip
 *.png
@@ -83,9 +85,7 @@ Thumbs.db
 desktop.ini
 
 # Logs
-*.log
-logs/
-loggers/
+loggers/logs/*.log
 
 # Documents
 *.pdf
