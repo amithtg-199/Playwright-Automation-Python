@@ -8,19 +8,6 @@ __pycache__/
 .venv/
 venv/
 
-#reports
-!reports/.gitkeep
-!reports/allure-results/.gitkeep
-!reports/screenshots/.gitkeep
-!reports/traces/.gitkeep
-!reports/videos/.gitkeep
-
-#Remove inside data
-reports/allure-results/*
-reports/screenshots/*
-reports/traces/*
-reports/videos/*
-
 *.webm
 *.zip
 *.png
