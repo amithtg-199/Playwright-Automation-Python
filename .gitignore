@@ -67,8 +67,7 @@ desktop.ini
 
 # Logs
 *.log
-logs/
-**/logs/
+!loggers/logs/.gitkeep
 
 # Reports & Test Execution Artifacts
 *.webm
