@@ -69,31 +69,15 @@ desktop.ini
 *.log
 logs/
 **/logs/
-loggers/
-**/loggers/
 
 # Reports & Test Execution Artifacts
-reports/
-**/reports/
-allure-results/
-**/allure-results/
-allure-report/
-**/allure-report/
-playwright-report/
-**/playwright-report/
-blob-report/
-**/blob-report/
-test-results/
-**/test-results/
+*.webm
+*.zip
+*.png
 *.html
 
 # Screenshots, Traces & Videos
-screenshots/
-**/screenshots/
-traces/
-**/traces/
-videos/
-**/videos/
+
 
 # Documents (PDFs, Office documents)
 *.pdf
