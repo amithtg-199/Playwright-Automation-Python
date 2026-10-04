@@ -10,6 +10,8 @@ venv/
 
 allure-report/*
 reports/allure-results/*
+!reports/allure-results/*.gitkeep
+
 *.webm
 *.zip
 *.png
