@@ -178,32 +178,36 @@ def browser_context(request):
 
     browser_name = browser_name.lower()
 
-    # Launch the specified browser
-    if browser_name == "chromium":
-        browser = playwright.chromium.launch(headless=not headed_flag)
-    elif browser_name == "firefox":
-        browser = playwright.firefox.launch(headless=not headed_flag)
-    elif browser_name == "webkit":
-        browser = playwright.webkit.launch(headless=not headed_flag)
-    else:
-        message = (f"[FAIL] Unsupported browser: {browser_name}")
-        log.error(message)
-        raise ValueError(message)
+    try:
+        # Launch the specified browser
+        if browser_name == "chromium":
+            browser = playwright.chromium.launch(headless=not headed_flag)
+        elif browser_name == "firefox":
+            browser = playwright.firefox.launch(headless=not headed_flag)
+        elif browser_name == "webkit":
+            browser = playwright.webkit.launch(headless=not headed_flag)
+        else:
+            message = (f"[FAIL] Unsupported browser: {browser_name}")
+            log.error(message)
+            raise ValueError(message)
 
-    # Create a browser context (optionally with video recording)
-    if video_option in ["on", "retain-on-failure"]:
-        context = browser.new_context(record_video_dir="reports/videos")
-    else:
-        context = browser.new_context()
+        # Create a browser context (optionally with video recording)
+        if video_option in ["on", "retain-on-failure"]:
+            context = browser.new_context(record_video_dir="reports/videos")
+        else:
+            context = browser.new_context()
 
-    # Yield the context for use in tests
-    yield context
+        # Yield the context for use in tests
+        yield context
 
-    # Clean up after the test
-    log.info("[TEARDOWN] Closing browser context and stopping Playwright...")
-    context.close()
-    browser.close()
-    playwright.stop()
+    finally:
+        # Clean up after the test
+        log.info("[TEARDOWN] Closing browser context and stopping Playwright...")
+        if context:
+            context.close()
+        if browser:
+            browser.close()
+        playwright.stop()
 
 
 # ----------------------------------------------------------------------------
