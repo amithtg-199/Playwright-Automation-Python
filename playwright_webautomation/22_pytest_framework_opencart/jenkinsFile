@@ -12,7 +12,7 @@ pipeline {
 
         choice(
             name: 'testgroups',
-            choices: ['sanity'],
+            choices: ['sanity','regression','smoke'],
             description: 'Pytest marker'
         )
 
@@ -41,14 +41,12 @@ pipeline {
     stages {
 
         stage('Checkout Code') {
+    steps {
+        deleteDir()
 
-            steps {
+        git branch: 'main', url: 'https://github.com/amithtg-199/Playwright-Automation-Python.git'
 
-                deleteDir()
-
-                git 'https://github.com/amithtg-199/Playwright-Automation-Python.git'
-
-                echo 'Code checked out successfully.'
+        echo 'Code checked out successfully.'
             }
         }
 
