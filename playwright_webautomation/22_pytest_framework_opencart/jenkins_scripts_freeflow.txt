@@ -1,0 +1,67 @@
+###################### Windows #############################
+cd /d "%WORKSPACE%\playwright_webautomation\22_pytest_framework_opencart"
+copy /Y "%DOTENV_PATH%" .env
+python -m venv .venv
+call .venv\Scripts\activate
+pip install -r requirements.txt
+playwright install
+if "%browser%"=="" set browser=chromium
+if "%testgroups%"=="" set testgroups=sanity
+if "%env%"=="" set env=uat
+pytest tests --browser %browser% -m %testgroups% --env=%env% --clean-alluredir
+
+###################### Linux #############################
+#!/bin/bash
+
+set -e
+
+cd "$WORKSPACE/playwright_webautomation/22_pytest_framework_opencart"
+
+cp -f "$DOTENV_PATH" .env
+
+python3 -m venv .venv
+
+source .venv/bin/activate
+
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
+playwright install
+
+browser="${browser:-chromium}"
+testgroups="${testgroups:-sanity}"
+env="${env:-uat}"
+
+pytest tests \
+    --browser "$browser" \
+    -m "$testgroups" \
+    --env="$env" \
+    --clean-alluredir
+
+###################### Macos #############################
+#!/bin/bash
+
+set -e
+
+cd "$WORKSPACE/playwright_webautomation/22_pytest_framework_opencart"
+
+cp -f "$DOTENV_PATH" .env
+
+python3 -m venv .venv
+
+source .venv/bin/activate
+
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
+playwright install
+
+browser="${browser:-chromium}"
+testgroups="${testgroups:-sanity}"
+env="${env:-uat}"
+
+pytest tests \
+    --browser "$browser" \
+    -m "$testgroups" \
+    --env="$env" \
+    --clean-alluredir

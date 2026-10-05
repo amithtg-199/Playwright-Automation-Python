@@ -1,0 +1,188 @@
+pipeline {
+
+    agent any
+
+    parameters {
+
+        choice(
+            name: 'browser',
+            choices: ['chromium', 'firefox', 'webkit'],
+            description: 'Browser to execute tests'
+        )
+
+        choice(
+            name: 'testgroups',
+            choices: ['sanity'],
+            description: 'Pytest marker'
+        )
+
+        choice(
+            name: 'env',
+            choices: ['dev', 'uat', 'preprod'],
+            description: 'Test environment'
+        )
+    }
+
+    environment {
+
+        PROJECT_DIR = 'playwright_webautomation\\22_pytest_framework_opencart'
+
+        VENV_DIR = 'playwright_webautomation\\22_pytest_framework_opencart\\.venv'
+
+        PYTHON = 'playwright_webautomation\\22_pytest_framework_opencart\\.venv\\Scripts\\python.exe'
+
+        PYTEST = 'playwright_webautomation\\22_pytest_framework_opencart\\.venv\\Scripts\\pytest.exe'
+
+        REPORT_DIR = 'playwright_webautomation\\22_pytest_framework_opencart\\reports'
+
+        ALLURE_DIR = 'playwright_webautomation\\22_pytest_framework_opencart\\reports\\allure-results'
+    }
+
+    stages {
+
+        stage('Checkout Code') {
+
+            steps {
+
+                deleteDir()
+
+                git 'https://github.com/amithtg-199/Playwright-Automation-Python.git'
+
+                echo 'Code checked out successfully.'
+            }
+        }
+
+        stage('Setup Python Environment') {
+
+            steps {
+
+                bat '''
+                    cd /d "%WORKSPACE%\\%PROJECT_DIR%"
+
+                    if not exist ".venv\\Scripts\\python.exe" (
+                        echo Creating virtual environment...
+                        python -m venv .venv
+                    ) else (
+                        echo Virtual environment already exists.
+                    )
+
+                    .venv\\Scripts\\python.exe --version
+                '''
+            }
+        }
+
+        stage('Install Dependencies') {
+
+            steps {
+
+                bat '''
+                    cd /d "%WORKSPACE%\\%PROJECT_DIR%"
+
+                    .venv\\Scripts\\python.exe -m pip install --upgrade pip
+
+                    .venv\\Scripts\\python.exe -m pip install -r requirements.txt
+
+                    .venv\\Scripts\\python.exe -m playwright install
+                '''
+            }
+        }
+
+        stage('Prepare Environment') {
+
+            steps {
+
+                withCredentials([
+                    file(
+                        credentialsId: 'DOTENV_FILE',
+                        variable: 'ENV_FILE'
+                    )
+                ]) {
+
+                    bat '''
+                        cd /d "%WORKSPACE%\\%PROJECT_DIR%"
+
+                        if exist ".env" (
+                            del /f /q ".env"
+                        )
+
+                        copy /Y "%ENV_FILE%" ".env"
+
+                        echo Environment configuration prepared.
+                    '''
+                }
+            }
+        }
+
+        stage('Clean Old Reports') {
+
+            steps {
+
+                bat '''
+                    cd /d "%WORKSPACE%\\%PROJECT_DIR%"
+
+                    if exist "reports" (
+                        rmdir /s /q "reports"
+                    )
+
+                    mkdir "reports\\allure-results"
+                '''
+            }
+        }
+
+        stage('Run Tests') {
+
+            steps {
+
+                bat '''
+                    cd /d "%WORKSPACE%\\%PROJECT_DIR%"
+
+                    echo ========================================
+                    echo Browser     : %browser%
+                    echo Test Group  : %testgroups%
+                    echo Environment : %env%
+                    echo ========================================
+
+                    .venv\\Scripts\\pytest.exe tests ^
+                        --browser "%browser%" ^
+                        --env "%env%" ^
+                        -m "%testgroups%" ^
+                        --alluredir="reports\\allure-results"
+                '''
+            }
+        }
+
+        stage('Publish Allure Report') {
+
+            steps {
+
+                allure(
+                    includeProperties: false,
+                    jdk: '',
+                    results: [
+                        [
+                            path: "${ALLURE_DIR}"
+                        ]
+                    ]
+                )
+            }
+        }
+    }
+
+    post {
+
+        always {
+
+            echo 'Jenkins build completed.'
+        }
+
+        success {
+
+            echo 'Tests executed successfully!'
+        }
+
+        failure {
+
+            echo 'Test execution failed!'
+        }
+    }
+}
