@@ -170,15 +170,19 @@ def browser_context(request):
     log.info(f"[Playwright Init] Starting browser: {browser_name}")
     log.info(f"[Playwright Init] Headless mode: {not headed_flag} (headed={headed_flag})")
 
-    # Start Playwright
-    playwright = sync_playwright().start()
 
     if isinstance(browser_name, list):
         browser_name = browser_name[0]
 
     browser_name = browser_name.lower()
+    playwright = None
+    browser = None
+    context = None
 
     try:
+        # Start Playwright
+        playwright = sync_playwright().start()
+        
         # Launch the specified browser
         if browser_name == "chromium":
             browser = playwright.chromium.launch(headless=not headed_flag)
