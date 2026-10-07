@@ -1,0 +1,7 @@
+1. create conftest and add a function fix for context.request
+2. scope session fixture for create_booking
+3. scope function fixture for create token
+4. use the create booking_id fixture get the booking_id, f_name, l_name for GET, PUT, PATCH, DELETE
+requests.
+5. Create a seperatre unit test for each APIs
+6. Create a E2E test case consisting for all scenarios.

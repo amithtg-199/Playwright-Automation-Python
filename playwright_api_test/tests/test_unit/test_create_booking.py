@@ -3,7 +3,7 @@ from utils.load_data import get_payload_data
 from payload_builder.payload_builder import build_payload
 import json
 
-def test_create_booking(playwright):
+def test_create_booking(playwright:Playwright):
 
     template = get_payload_data(
         "create_booking.json"
@@ -32,3 +32,5 @@ def test_create_booking(playwright):
     assert response_body["booking"]["totalprice"] == test_data["total_price"]
 
     assert response_body["booking"]["depositpaid"] == test_data["deposit_paid"]
+
+    request.dispose()
