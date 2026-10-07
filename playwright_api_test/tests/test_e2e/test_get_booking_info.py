@@ -1,5 +1,6 @@
 import pytest
 
+@pytest.mark.e2e
 def test_get_booking_info(create_booking, request_context):
     response, test_data = create_booking
     headers = {"Accept":"application/json"}
