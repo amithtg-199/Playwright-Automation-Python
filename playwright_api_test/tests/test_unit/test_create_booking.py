@@ -1,6 +1,7 @@
 from playwright.sync_api import Playwright, expect
-from utils.load_data import get_payload_data
+from utils.load_data import get_payload_data, get_json_schema
 from payload_builder.payload_builder import build_payload
+from utils.json_schema_validator import json_schema_validator
 import json
 
 def test_create_booking(playwright:Playwright):
@@ -34,3 +35,14 @@ def test_create_booking(playwright:Playwright):
     assert response_body["booking"]["depositpaid"] == test_data["deposit_paid"]
 
     request.dispose()
+
+def test_create_booking_response_schema_validation(create_booking):
+    response,test_data = create_booking
+
+    response_body = response.json()
+
+    schema = get_json_schema("create_booking_scheam.json")
+
+    result = json_schema_validator(json_response=response_body,json_scehma=schema)
+
+    assert result, ("[TEST] JSON Response Schema Validation Failed")
